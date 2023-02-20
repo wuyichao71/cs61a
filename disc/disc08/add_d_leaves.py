@@ -62,9 +62,8 @@ def add_d_leaves(t, v):
     def helper(at, depth):
         for b in at.branches:
             helper(b, depth+1)
+        at.branches = at.branches + [Tree(v) for i in range(depth)]
 
-        for i in range(depth):
-            at.branches.append(v)
     helper(t, 0)
 
 
