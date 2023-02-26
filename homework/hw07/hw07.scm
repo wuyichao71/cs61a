@@ -5,11 +5,10 @@
 (define (caddr s) (car (cddr s)))
 
 (define (ascending? asc-lst) 
-    (if (null? (cdr asc-lst)) #t 
-        (if (> (car asc-lst) (cadr asc-lst)) #f
-            (ascending? (cdr asc-lst))
-        )
-    )
+  (cond
+    ((null? (cdr asc-lst)) #t)
+    ((> (car asc-lst) (cadr asc-lst)) #f)
+    (else (ascending? (cdr asc-lst))))
 )
 
 
