@@ -1,0 +1,5 @@
+(define a (+ 1 2))
+(print a)
+(define b (- (+ (* 3 3) 2) 1))
+(+ a b)
+(= (modulo b a) (quotient 5 3))

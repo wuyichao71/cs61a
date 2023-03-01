@@ -1,0 +1,6 @@
+(define a 1)
+a
+(define a b)
+b
+(define c 'a)
+c

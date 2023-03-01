@@ -1,0 +1,4 @@
+(setq package-archives '(("gnu" . "http://mirrors.nju.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.nju.edu.cn/elpa/melpa/")
+                         ("nongnu" . "http://mirrors.nju.edu.cn/elpa/nongnu/")))
+(load-theme 'ahungry t)
