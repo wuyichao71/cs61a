@@ -11,6 +11,10 @@
    (else (cons (car lst1) (interleave lst2 (cdr lst1))))))
 
 (define (accumulate joiner start n term)
-  'YOUR-CODE-HERE)
+  (if (= n 1) (joiner start (term n)) (accumulate joiner (joiner start (term n)) (- n 1) term)))
 
-(define (no-repeats lst) 'YOUR-CODE-HERE)
+(define (no-repeats lst)
+  (if (null? lst) nil
+      (cons (car lst)
+	    (no-repeats
+	     (my-filter (lambda (x) (not (= (car lst) x))) (cdr lst))))))
