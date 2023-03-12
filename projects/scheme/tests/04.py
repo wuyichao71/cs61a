@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': 'Pair(A, Pair(B, nil)), where: A is the symbol being bound, B is an expression whose value should be evaluated and bound to A',
+          'answer': 'e92e90f58a272e7a74651635251ade14',
           'choices': [
             r"""
             Pair(A, Pair(B, nil)), where:
@@ -34,12 +34,12 @@ test = {
             """
           ],
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'multiline': False,
           'question': 'What is the structure of the expressions argument to do_define_form?'
         },
         {
-          'answer': 'define',
+          'answer': '0ed53dce7bacc4766422abc478c5c895',
           'choices': [
             'make_child_frame',
             'define',
@@ -47,7 +47,7 @@ test = {
             'bindings'
           ],
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'multiline': False,
           'question': r"""
           What method of a Frame instance will bind
@@ -63,29 +63,36 @@ test = {
         {
           'code': r"""
           scm> (define size 2)
-          size
+          cc3c061fb8167d02a4ddda1f1c19966e
+          # locked
           scm> size
-          2
+          2b7cdec3904f986982cbd24a0bc12887
+          # locked
           """,
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'multiline': False
         },
         {
           'code': r"""
           scm> (define x (+ 2 3))
-          x
+          38ba916dc1f41eb239567ee41a251ecd
+          # locked
           scm> x
-          5
+          b33c0f7206201b4aaeae595493888600
+          # locked
           scm> (define x (+ 2 7))
-          x
+          38ba916dc1f41eb239567ee41a251ecd
+          # locked
           scm> x
-          9
+          27c11fef0d1b8697654b38bb53c550c8
+          # locked
           scm> (eval (define tau 6.28))
-          6.28
+          aa59dd661f134fa3eab23231a65d789e
+          # locked
           """,
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'multiline': False
         },
         {
@@ -138,20 +145,26 @@ test = {
         {
           'code': r"""
           scm> (define x 15)
-          x
+          38ba916dc1f41eb239567ee41a251ecd
+          # locked
           scm> (define y (* 2 x))
-          y
+          1a9a3321b8b99a0f9291d89be986e74c
+          # locked
           scm> y
-          30
+          f21c086efebbe30ead8e65c805ec6c78
+          # locked
           scm> (+ y (* y 2) 1)
-          91
+          f8bef99b0acb9318d4bd35fc40f2d4ff
+          # locked
           scm> (define x 20)
-          x
+          38ba916dc1f41eb239567ee41a251ecd
+          # locked
           scm> x
-          20
+          4ce27a311486b293ac49408159fd2437
+          # locked
           """,
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'multiline': False
         },
         {
