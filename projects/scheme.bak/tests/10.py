@@ -7,8 +7,7 @@ test = {
         {
           'code': r"""
           scm> (define (f x y) (+ x y))
-          715124391110b4a3beec8c9ba1ec3097
-          # locked
+          f
           scm> f
           1456de84c3edf333b6f7aee0c0624b20
           # locked
