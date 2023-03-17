@@ -20,6 +20,8 @@ class Frame:
         """An empty frame with parent frame PARENT (which may be None)."""
         # BEGIN Problem 1
         "*** YOUR CODE HERE ***"
+        self.bindings = {}
+        self.parent = parent
         # END Problem 1
 
     def __repr__(self):
@@ -32,10 +34,29 @@ class Frame:
         """Define Scheme SYMBOL to have VALUE."""
         # BEGIN Problem 1
         "*** YOUR CODE HERE ***"
+        self.bindings[symbol] = value
         # END Problem 1
 
     # BEGIN Problem 1
     "*** YOUR CODE HERE ***"
+    def lookup(self, symbol):
+        cur_frame = self
+        while cur_frame is not None:
+            if symbol in cur_frame.bindings:
+                return cur_frame.bindings[symbol]
+            cur_frame = cur_frame.parent
+        raise SchemeError(f'unknown identifier: {symbol}')
+
+    def make_child_frame(self, formals, vals):
+        if len(formals) != len(vals):
+            raise SchemeError
+
+        child_frame = Frame(self)
+        while formals is not nil:
+            child_frame.define(formals.first, vals.first)
+            formals = formals.rest
+            vals = vals.rest
+        return child_frame
     # END Problem 1
 
 ##############
@@ -109,3 +130,10 @@ class MuProcedure(Procedure):
     def __repr__(self):
         return 'MuProcedure({0}, {1})'.format(
             repr(self.formals), repr(self.body))
+
+
+class MacroProcedure(LambdaProcedure):
+    name = '[macro]'  # Error tracing extension
+    def __repr__(self):
+        return 'MacroProcedure({0}, {1}, {2})'.format(
+            repr(self.formals), repr(self.body), repr(self.env))

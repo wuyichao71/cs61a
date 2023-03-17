@@ -7,7 +7,10 @@
 ;; Returns a list of two-element lists
 (define (enumerate s)
   ; BEGIN PROBLEM 15
-  'replace-this-line
+  (define (helper i t)
+    (if (null? t) nil
+      (cons (list i (car t)) (helper (+ i 1) (cdr t)))))
+  (helper 0 s)
   )
   ; END PROBLEM 15
 
@@ -17,7 +20,11 @@
 ;; the merged lists.
 (define (merge ordered? list1 list2)
   ; BEGIN PROBLEM 16
-  'replace-this-line
+  (cond
+    ((null? list1) list2)
+    ((null? list2) list1)
+    ((ordered? (car list1) (car list2)) (cons (car list1) (merge ordered? (cdr list1) list2)))
+    (else (cons (car list2) (merge ordered? list1 (cdr list2)))))
   )
   ; END PROBLEM 16
 
@@ -36,12 +43,12 @@
 (define (let-to-lambda expr)
   (cond ((atom? expr)
          ; BEGIN OPTIONAL PROBLEM 2
-         'replace-this-line
+         expr
          ; END OPTIONAL PROBLEM 2
          )
         ((quoted? expr)
          ; BEGIN OPTIONAL PROBLEM 2
-         'replace-this-line
+         expr
          ; END OPTIONAL PROBLEM 2
          )
         ((or (lambda? expr)
@@ -50,23 +57,28 @@
                (params (cadr expr))
                (body   (cddr expr)))
            ; BEGIN OPTIONAL PROBLEM 2
-           'replace-this-line
+           (cons form (cons params (let-to-lambda body)))
            ; END OPTIONAL PROBLEM 2
            ))
         ((let? expr)
          (let ((values (cadr expr))
                (body   (cddr expr)))
            ; BEGIN OPTIONAL PROBLEM 2
-           'replace-this-line
+           (define tmp (zip values))
+           (cons (cons 'lambda (cons (car tmp) (let-to-lambda body))) (let-to-lambda (cadr tmp)))
            ; END OPTIONAL PROBLEM 2
            ))
         (else
          ; BEGIN OPTIONAL PROBLEM 2
-         'replace-this-line
+         (map let-to-lambda expr)
          ; END OPTIONAL PROBLEM 2
          )))
 
 ; Some utility functions that you may find useful to implement for let-to-lambda
 
 (define (zip pairs)
-  'replace-this-line)
+  (if (null? pairs) (list nil nil)
+    (begin
+      (define tmp (zip (cdr pairs)))
+      (list (cons (caar pairs) (car tmp)) (cons (car (cdar pairs)) (cadr tmp)))
+      )))
