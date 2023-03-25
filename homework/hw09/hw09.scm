@@ -1,8 +1,8 @@
 (define-macro (when condition exprs)
-  'YOUR-CODE-HERE)
+  (list 'if condition (cons 'begin exprs) '(quote okay)))
 
 (define-macro (switch expr cases)
-  (cons _________
-        (map (_________ (_________)
-                        (cons _________ (cdr case)))
+  (cons 'cond
+        (map (lambda (case)
+                        (cons (list 'equal? expr (list 'quote (car case))) (cdr case)))
              cases)))
