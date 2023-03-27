@@ -1,0 +1,7 @@
+(define x '(+ 1 1))
+(define y '(+ 2 3))
+(begin (+ 1 1) (+ 2 3))
+(eval '(begin (+ 1 1) (+ 2 3)))
+`(begin ,x ,y)
+(list 'begin x y)
+(cons 'begin (cons x (cons y nil)))
